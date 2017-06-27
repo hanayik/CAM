@@ -4,26 +4,11 @@
 </head>
 <body>
   <div id="containerDiv" class="container">
-    <!-- <div id="navPanel" class="nav">
-      <div class="menuBtn">
-        <span id="closeNavBtn" class="closebtn" onclick="toggleNav()"></span>
-      </div>
-      <div class="menuList">
-        <form action="hideNav()">
-          <label for="subjID">Participant</label>
-          <input type="text" id="subjID" name="subjid" placeholder="0">
-
-          <label for="sessID">Session</label>
-          <input type="text" id="sessID" name="sessid" placeholder="0">
-
-          <label for="picNumID">Picture</label>
-          <input type="text" id="picNumID" name="picnumid" placeholder="1" value="1">
-
-          <button type="button" onclick="getStarted()">Start</button>
-        </form>
-      </div>
-    </div> -->
     <div id="contentDiv" class="content">
+      <input type="text" id="subjID" name="subjid" value="" placeholder="ID">
+      <input type="text" id="sessID" name="sessid" value="" placeholder="Session">
+      <input type="text" id="taskID" name="taskid" value="" placeholder="Task">
+      <div class="circle-btn" id="recordBtn"></div>
     </div>
   </div>
   <script type="text/javascript" src="./core.js"></script>

@@ -18,18 +18,36 @@ var sys = {
   modelID: 'unknown',
   isMacBook: false // need to detect if macbook for ffmpeg recording framerate value
 }
-var exp = new experiment('pnt')
+var exp = new experiment('CAM')
 var rec = new ff()
 exp.getRootPath()
 exp.getMediaPath()
 var userDataPath = path.join(app.getPath('userData'),'Data')
 makeSureUserDataFolderIsThere()
 var savePath
+var isRecording = false
+
+startWebCamPreview()
+document.getElementById("recordBtn").onclick = toggleRecording
 
 
 
 
 
+
+function toggleRecording() {
+  if (isRecording == false) {
+    stopWebCamPreview()
+    rec.startRec()
+    isRecording = true
+    document.getElementById("recordBtn").style.borderRadius = "20px";
+  } else if (isRecording == true) {
+    startWebCamPreview()
+    rec.stopRec()
+    isRecording = false
+    document.getElementById("recordBtn").style.borderRadius = "50px";
+  }
+}
 
 
 function getSubjID() {
@@ -57,7 +75,7 @@ function makeSureUserDataFolderIsThere() {
 
 //camera preview on
 function startWebCamPreview() {
-  clearScreen()
+  //clearScreen()
   var vidPrevEl = document.createElement("video")
   vidPrevEl.autoplay = true
   vidPrevEl.id = "webcampreview"
@@ -79,7 +97,9 @@ function stopWebCamPreview () {
   if(typeof localMediaStream !== "undefined")
   {
     localMediaStream.getVideoTracks()[0].stop()
-    clearScreen()
+    //clearScreen()
+    vidPrevEl = document.getElementById("webcampreview")
+    content.removeChild(vidPrevEl)
   }
 }
 
@@ -128,7 +148,7 @@ function ff() {
   this.screenDeviceID = '1',           // macOS only
   this.videoSize = '1280x720',         // output video dimensions
   this.videoCodec = 'libx264',         // encoding codec libx264
-  this.recQuality = '20',              //0-60 (0 = perfect quality but HUGE files)
+  this.recQuality = '25',              //0-60 (0 = perfect quality but HUGE files)
   this.preset = 'ultrafast',
   this.videoExt = '.mp4',
   // filter is for picture in picture effect
@@ -138,7 +158,7 @@ function ff() {
     var subjID = document.getElementById("subjID").value
     if (subjID === '') {
       console.log ('subject is blank')
-      alert('Participant field is blank!')
+      //alert('Participant field is blank!')
       subjID = '0000'
     }
     return subjID
@@ -147,14 +167,23 @@ function ff() {
     var sessID = document.getElementById("sessID").value
     if (sessID === '') {
       console.log ('session is blank')
-      alert('Session field is blank!')
+      //alert('Session field is blank!')
       sessID = '0000'
     }
     return sessID
   },
+  this.getTaskID = function () {
+    var taskID = document.getElementById("taskID").value
+    if (taskID === '') {
+      console.log ('task is blank')
+      //alert('task field is blank!')
+      taskID = 'notask'
+    }
+    return taskID
+  },
   this.datestamp = getDateStamp(),
   this.makeOutputFolder = function () {
-    outpath = path.join(savePath, 'PolarData', app.getName(), getSubjID(), getSessID())
+    outpath = path.join(savePath, 'PolarData', "CAM", getSubjID(), getSessID())
     console.log(outpath)
     if (!fs.existsSync(outpath)) {
       mkdirp.sync(outpath)
@@ -162,7 +191,7 @@ function ff() {
     return outpath
   }
   this.outputFilename = function() {
-    return path.join(this.makeOutputFolder(), this.getSubjID()+'_'+this.getSessID()+'_'+app.getName()+'_'+getDateStamp()+this.videoExt)
+    return path.join(this.makeOutputFolder(), this.getSubjID()+'_'+this.getSessID()+'_'+this.getTaskID()+'_'+getDateStamp()+this.videoExt)
   },
   this.getFramerate = function () {
     if (sys.isMacBook == true){
@@ -177,20 +206,13 @@ function ff() {
       this.ffmpegPath +
       ' ' + this.shouldOverwrite +
       ' -thread_queue_size ' + this.threadQueSize +
-      ' -f ' + this.screenFormat +
-      ' -framerate ' + this.getFramerate().toString() +
-      ' -async 1' +
-      ' -i ' + '"' + this.screenDeviceID + '"' +
-      ' -thread_queue_size ' + this.threadQueSize +
       ' -f ' + this.cameraFormat +
       ' -framerate ' + this.getFramerate().toString() +
       ' -video_size ' + this.videoSize +
       ' -i "' + this.cameraDeviceID + '":"' + this.audioDeviceID + '"' +
-      //' -profile:v baseline' +
       ' -c:v ' + this.videoCodec +
       ' -crf ' + this.recQuality +
       ' -preset ultrafast' +
-      ' -filter_complex ' + this.filter +
       ' -r ' + this.getFramerate().toString() +
       ' -movflags +faststart ' + '"' + this.outputFilename() + '"'
     ]
