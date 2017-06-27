@@ -1,0 +1,133 @@
+body {
+  transition: background-color .5s;
+  font-family: "Lato", sans-serif;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-width: 400px;
+}
+
+.startBtn {
+    width: 150px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 3% 5%;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+    box-shadow: 2px 2px 3px #ccc;
+}
+
+.nav {
+  position: fixed;
+  flex: initial;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100px;
+  min-width: 0px;
+  top: 0;
+  left: 0;
+  /*border:1px solid black;*/
+  background-color: #e8f2f7;
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.nav::-webkit-scrollbar {
+  /* This is the magic bit */
+  display: none;
+}
+
+.nav span {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #000000;
+    transition: 0.2s
+}
+
+input[type=text], select {
+    text-align: center;
+    width: 90%;
+    padding: 12px 20px;
+    margin: 3% 5%;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+label {
+    /*width: 90%;*/
+    padding: 0px 0px;
+    margin: 3% 5%;
+}
+
+.nav button {
+    width: 90%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 3% 5%;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+    box-shadow: 2px 2px 3px #ccc;
+}
+
+.nav button:active {
+    box-shadow: inset 0px 0px 4px #ccc;
+    background-color: #3C8C40;
+}
+
+.menuList span:hover, .offcanvas span:focus{
+    color: #217396;
+    font-size: 17;
+}
+
+.nav .menuBtn {
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.nav .closebtn {
+  font-size: 36px;
+}
+
+.menuList {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.content {
+  display: flex;
+  -webkit-flex: 1 0 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#contentDiv {
+    transition: margin-left .5s;
+    /*padding: 0px;*/
+}
+
+img {
+  width: auto;
+  height: 100%;
+  object-fit: contain;
+}
+
+video {
+  width: auto;
+  height: 60%;
+  object-fit: contain;
+}

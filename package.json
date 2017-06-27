@@ -1,0 +1,52 @@
+{
+  "name": "CAM",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron app.js",
+    "build-mac": "electron-packager . --out=dist --platform=darwin --icon ./icon.icns --overwrite --tmpdir=false",
+    "osx-sign": "codesign --deep --force --verbose --sign 'PLJK232T8G' ./dist/CAM-darwin-x64/CAM.app",
+    "startAppWithLogging": "./dist/CAM-darwin-x64/CAM.app/Contents/MacOS/CAM"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hanayik/CAM.git"
+  },
+  "keywords": [
+    "naming",
+    "psychology",
+    "aphasia",
+    "test",
+    "language",
+    "stroke"
+  ],
+  "author": "Taylor Hanayik",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hanayik/CAM/issues"
+  },
+  "homepage": "https://github.com/hanayik/CAM#readme",
+  "devDependencies": {
+    "app-root-dir": "^1.0.2",
+    "csvsync": "^1.0.1",
+    "electron": "^1.4.15",
+    "electron-packager": "^8.5.1",
+    "jQuery": "^1.7.4",
+    "moment": "^2.17.1",
+    "systeminformation": "^3.16.0"
+  },
+  "dependencies": {
+    "app-root-dir": "^1.0.2",
+    "csvsync": "^1.0.1",
+    "electron-gh-releases": "^2.0.4",
+    "electron-notifications": "^0.1.6",
+    "electron-settings": "^3.0.6",
+    "jQuery": "^1.7.4",
+    "mkdirp": "^0.5.1",
+    "moment": "^2.17.1",
+    "system-control": "0.0.4",
+    "systeminformation": "^3.16.0"
+  }
+}
