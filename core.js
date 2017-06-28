@@ -33,6 +33,10 @@ document.getElementById("recordBtn").onclick = toggleRecording
 
 
 
+function updateFilenamePreview() {
+  filenameTextArea = document.getElementById("fileNamePreview")
+  filenameTextArea.innerHTML = getSubjID() + "_" + getSessID() + "_" + getTaskID() + "_" + getDateStamp() + ".mp4"
+}
 
 
 function toggleRecording() {
@@ -53,15 +57,23 @@ function toggleRecording() {
 function getSubjID() {
   var subjID = document.getElementById("subjID").value
   if (subjID === '') {
-    subjID = '0'
+    subjID = ''
   }
   return subjID
+}
+
+function getTaskID() {
+  var taskID = document.getElementById("taskID").value
+  if (taskID === '') {
+    taskID = ''
+  }
+  return taskID
 }
 
 function getSessID() {
   var sessID = document.getElementById("sessID").value
   if (sessID === '') {
-    sessID = '0'
+    sessID = ''
   }
   return sessID
 }
