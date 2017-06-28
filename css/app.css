@@ -22,7 +22,9 @@ input[type=text], select {
     /*border: 1px solid #ccc;*/
     outline: none;
     border-radius: 10px;
-    box-sizing: border-box;
+    border-width:0px;
+    border:none;
+    /*box-sizing: border-box;*/
     font-size:18px;
 }
 
