@@ -5,7 +5,7 @@ const csvsync = require('csvsync')
 const fs = require('fs')
 const $ = require('jQuery')
 const {app} = require('electron').remote;
-app.setName('PNT')
+app.setName('CAM')
 const appRootDir = require('app-root-dir').get() //get the path of the application bundle
 const ffmpeg = appRootDir+'/ffmpeg/ffmpeg'
 const exec = require( 'child_process' ).exec
