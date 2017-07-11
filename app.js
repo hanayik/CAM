@@ -18,6 +18,7 @@ var ipcMain = require('electron').ipcMain;
 var platform = os.platform() + '_' + os.arch();
 var version = app.getVersion();
 var updateResponse
+var shouldShowMessageNow = false
 app.setName("CAM")
 //icon credit: http://www.flaticon.com/packs/camp-collection
 // Keep a global reference of the window object, if you don't, the window will
@@ -75,6 +76,7 @@ app.on('activate', function () {
 })
 
 ipcMain.on('user-requests-update', function() {
+  shouldShowMessageNow = true
   console.log('user requested an update check')
   autoUpdater.checkForUpdates()
 })
@@ -104,18 +106,21 @@ autoUpdater.on('update-available', function(){
 })
 autoUpdater.on('update-not-available', function(){
   console.log('update not available')
-  var dialogOptions = {
-    type: "info",
-    buttons: ["Ok"],
-    defaultId: 0,
-    title: "No update available",
-    message: "There are no updates available. You have the most recent version!",
-    cancelId: 0
-  }
-  dialog.showMessageBox(mainWindow, dialogOptions , function (response) {
-    
-  })
+  if (shouldShowMessageNow) {
+    var dialogOptions = {
+      type: "info",
+      buttons: ["Ok"],
+      defaultId: 0,
+      title: "No update available",
+      message: "There are no updates available. You have the most recent version!",
+      cancelId: 0
+    }
+    dialog.showMessageBox(mainWindow, dialogOptions , function (response) {
+
+    })
+}
 })
+
 autoUpdater.on('update-downloaded', function(){
   if (updateResponse == 1) {
     autoUpdater.quitAndInstall()
