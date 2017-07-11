@@ -35,7 +35,7 @@ input[type=text], select {
   background-color: #AF3232;
   border-radius: 50%;
   border: 6px solid #D0D0D0;
-  margin-top: 20px;
+  margin-top: 10px;
   margin-bottom: 20px;
   transition-property: border-radius;
   transition-duration: 1s;
