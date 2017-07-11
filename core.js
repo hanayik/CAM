@@ -11,6 +11,7 @@ const ffmpeg = appRootDir+'/ffmpeg/ffmpeg'
 const exec = require( 'child_process' ).exec
 const si = require('systeminformation');
 const mkdirp = require('mkdirp');
+var ipcRenderer = require('electron').ipcRenderer;
 var moment = require('moment')
 var content = document.getElementById("contentDiv")
 var localMediaStream
@@ -31,6 +32,12 @@ startWebCamPreview()
 document.getElementById("recordBtn").onclick = toggleRecording
 
 
+
+
+function checkForUpdateFromRender() {
+  ipcRenderer.send('user-requests-update')
+  //alert('checked for update')
+}
 
 
 function updateFilenamePreview() {

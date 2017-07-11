@@ -14,6 +14,7 @@ const system = require('system-control')();
 const notifier = require('electron-notifications')
 const autoUpdater = electron.autoUpdater
 const os = require("os");
+var ipcMain = require('electron').ipcMain;
 var platform = os.platform() + '_' + os.arch();
 var version = app.getVersion();
 var updateResponse
@@ -73,6 +74,11 @@ app.on('activate', function () {
   }
 })
 
+ipcMain.on('user-requests-update', function() {
+  console.log('user requested an update check')
+  autoUpdater.checkForUpdates()
+})
+
 autoUpdater.on('error', function(err) {
   console.log(err)
 })
@@ -98,6 +104,7 @@ autoUpdater.on('update-available', function(){
 })
 autoUpdater.on('update-not-available', function(){
   console.log('update not available')
+  alert('no update available')
 })
 autoUpdater.on('update-downloaded', function(){
   if (updateResponse == 1) {
