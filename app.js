@@ -104,7 +104,17 @@ autoUpdater.on('update-available', function(){
 })
 autoUpdater.on('update-not-available', function(){
   console.log('update not available')
-  alert('no update available')
+  var dialogOptions = {
+    type: "info",
+    buttons: ["Ok"],
+    defaultId: 0,
+    title: "No update available",
+    message: "There are no updates available. You have the most recent version!",
+    cancelId: 0
+  }
+  dialog.showMessageBox(mainWindow, dialogOptions , function (response) {
+    
+  })
 })
 autoUpdater.on('update-downloaded', function(){
   if (updateResponse == 1) {
