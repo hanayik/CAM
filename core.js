@@ -241,6 +241,7 @@ function ff() {
     exec(cmd,{maxBuffer: 2000 * 1024}, (error, stdout, stderr) => {
       if (error) {
         console.error(`exec error: ${error}`)
+        alert('Recording stopped!')
         return
       }
       // console.log(`stdout: ${stdout}`);
