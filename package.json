@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron app.js",
     "build-mac": "electron-packager . --out=dist --platform=darwin --icon ./icon.icns --overwrite --tmpdir=false",
-    "osx-sign": "codesign --deep --force --verbose --sign 'PLJK232T8G' ./dist/CAM-darwin-x64/CAM.app",
+    "osx-sign": "codesign --deep --force --verbose -s 'Developer ID Application: Taylor Hanayik' ./dist/CAM-darwin-x64/CAM.app",
     "startAppWithLogging": "./dist/CAM-darwin-x64/CAM.app/Contents/MacOS/CAM"
   },
   "repository": {
