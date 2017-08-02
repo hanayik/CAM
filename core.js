@@ -62,7 +62,7 @@ function toggleRecording() {
 
 
 function getSubjID() {
-  var subjID = document.getElementById("subjID").value
+  var subjID = document.getElementById("subjID").value.trim()
   if (subjID === '') {
     subjID = ''
   }
@@ -70,7 +70,7 @@ function getSubjID() {
 }
 
 function getTaskID() {
-  var taskID = document.getElementById("taskID").value
+  var taskID = document.getElementById("taskID").value.trim()
   if (taskID === '') {
     taskID = ''
   }
@@ -78,7 +78,7 @@ function getTaskID() {
 }
 
 function getSessID() {
-  var sessID = document.getElementById("sessID").value
+  var sessID = document.getElementById("sessID").value.trim()
   if (sessID === '') {
     sessID = ''
   }
@@ -174,7 +174,7 @@ function ff() {
   this.filter = '"[0]scale=iw/8:ih/8 [pip]; [1][pip] overlay=main_w-overlay_w-10:main_h-overlay_h-10"',
   this.isRecording = false,
   this.getSubjID = function() {
-    var subjID = document.getElementById("subjID").value
+    var subjID = document.getElementById("subjID").value.trim()
     if (subjID === '') {
       console.log ('subject is blank')
       //alert('Participant field is blank!')
@@ -183,7 +183,7 @@ function ff() {
     return subjID
   },
   this.getSessID = function () {
-    var sessID = document.getElementById("sessID").value
+    var sessID = document.getElementById("sessID").value.trim()
     if (sessID === '') {
       console.log ('session is blank')
       //alert('Session field is blank!')
@@ -192,7 +192,7 @@ function ff() {
     return sessID
   },
   this.getTaskID = function () {
-    var taskID = document.getElementById("taskID").value
+    var taskID = document.getElementById("taskID").value.trim()
     if (taskID === '') {
       console.log ('task is blank')
       //alert('task field is blank!')
