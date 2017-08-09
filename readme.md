@@ -16,6 +16,13 @@ When you're done recording click the red square and your video will be saved.
 The saved location will depend on your computer. The program automatically detects if you have Dropbox, or Box folders on your computer and tries to save to those locations first, in that order. If you do not wish to save to the cloud folders then uncheck that option in the menu bar. If the cloud saving option is unchecked, or those folders do not exist on your computer then the app will save to it's default MacOS location which is ``` ~/Library/Application Support/CAM/data/ ```
 
 ### Screen shots
+<img src="./gh-screenshots/1.png" width="300" height=auto />
+
+<img src="./gh-screenshots/2.png" width="300" height=auto />
+
+<img src="./gh-screenshots/3.png" width="300" height=auto />
+
+<img src="./gh-screenshots/4.png" width="300" height=auto />
 
 
 ### Credits
@@ -26,7 +33,7 @@ The saved location will depend on your computer. The program automatically detec
 
 
 ### License
-[MIT](https://choosealicense.com/licenses/mit/)
+[MIT](https://github.com/hanayik/CAM/blob/master/LICENSE)
 
 This app was made specifically for the CSTAR group, but is open source so that others may modify and use as desired. 
 
