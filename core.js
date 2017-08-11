@@ -202,7 +202,7 @@ function ff() {
   },
   this.datestamp = getDateStamp(),
   this.makeOutputFolder = function () {
-    outpath = path.join(savePath, 'PolarData', "CAM", getSubjID(), getSessID())
+    outpath = path.join(savePath, "CAM", getSubjID(), getSessID())
     console.log(outpath)
     if (!fs.existsSync(outpath)) {
       mkdirp.sync(outpath)

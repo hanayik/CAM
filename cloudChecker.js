@@ -41,15 +41,15 @@ function checkForCloudOptions() {
   if (useCloud === true) {
     // Box Sync will be rarely used, so check it first
     if (fs.existsSync(boxSyncDir)) {
-      savePath = boxSyncDir
+      savePath = path.join(boxSyncDir, 'MUSC_POLAR')
       console.log("save path is: ", savePath)
       return savePath
     } else if (fs.existsSync(dropboxCstarDir)) {
-      savePath = dropboxCstarDir
+      savePath = path.join(dropboxCstarDir, 'PolarData')
       console.log("save path is: ", savePath)
       return savePath
     } else if (fs.existsSync(dropboxDir)) {
-      savePath = dropboxDir
+      savePath = path.join(dropboxDir, 'PolarData')
       console.log("save path is: ", savePath)
       return savePath
     }
