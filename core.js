@@ -233,8 +233,9 @@ function ff() {
       ' -crf ' + this.recQuality +
       ' -preset ultrafast' +
       ' -r ' + this.getFramerate().toString() +
-      ' -movflags +faststart ' + '"' + this.outputFilename() + '"'
+      '  ' + '"' + this.outputFilename() + '"'
     ]
+    cmd = cmd.toString()
     console.log('ffmpeg cmd: ')
     console.log(cmd)
     this.isRecording = true
