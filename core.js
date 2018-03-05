@@ -159,7 +159,7 @@ function ff() {
 
   },
   this.shouldOverwrite = '-y',         // do overwrite if file with same name exists
-  this.threadQueSize = '50',           // preallocation
+  this.threadQueSize = '512',           // preallocation
   this.cameraFormat = 'avfoundation',  // macOS only
   this.screenFormat = 'avfoundation',  // macOS only
   this.cameraDeviceID = '0',           // macOS only
